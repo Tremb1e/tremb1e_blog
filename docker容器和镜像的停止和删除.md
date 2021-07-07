@@ -130,7 +130,7 @@ docker rmi $(docker images -q)
 docker container prune -f
 ```
 
-![delete container which doesn't use](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/delete%20container%20which%20don%27t%20use.png)
+![delete container which doesn't use](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/delete%20container%20which%20doesn%27t%20use.png)
 
 
 ## 7.删除所有不使用的镜像
