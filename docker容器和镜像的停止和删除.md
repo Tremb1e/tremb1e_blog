@@ -96,7 +96,7 @@ docker rm $(docker ps -aq)
 
 和停止容器同样， docker stop 操作的对象也是 container id 
 
-![docker delete all container](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/docker%20delete%20container.png)
+![docker delete all container](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/docker%20delete%20all%20container.png)
 
 ## 5.删除所有镜像
 
