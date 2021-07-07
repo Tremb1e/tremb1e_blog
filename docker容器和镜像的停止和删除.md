@@ -14,7 +14,7 @@ docker images
 
 存储库和镜像ID分析
 
-（1）repository-存储库：此时为dockerhub中的nginx官方仓库，若为私有仓库，格式一般为demo.harbor.com/demo/nginx
+（1）repository-存储库：此时为dockerhub中的nginx官方仓库，若为私有仓库，格式一般为demo.harbor.com/demo/nginx:tag
 
 ```
 docker login --username=$username $url
