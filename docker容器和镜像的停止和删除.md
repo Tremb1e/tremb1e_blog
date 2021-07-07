@@ -33,7 +33,7 @@ docker images
 
 查看镜像列表
 
-![私有镜像格式](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F.png)
+![私有镜像格式](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E6%A0%BC%E5%BC%8F.png)
 
 （2）image id-镜像的ID：镜像ID唯一的表示一个镜像，ID值是根据该镜像的数据配置文件使用sha256算法计算获得。文件存放在 /var/lib/docker/image/overlay2/imagedb/content/sha256 目录中。
 ![image id存放位置](https://macrz-wordpress.oss-cn-beijing.aliyuncs.com/2021-07-06%3Adocker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F%E7%9A%84%E5%81%9C%E6%AD%A2%E5%92%8C%E5%88%A0%E9%99%A4/image%20id%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE.png)
