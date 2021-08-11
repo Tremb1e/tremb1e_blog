@@ -19,7 +19,7 @@ unzip GmSSL-master.zip
 ### 先预装需要的软件
 
 ```
-yum insatll make perl gcc
+yum install make perl gcc
 ```
 
 ### 开始进行编译和安装
