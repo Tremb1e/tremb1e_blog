@@ -39,6 +39,7 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -
 #### 使用以下命令设置稳定存储库
 
 ##### x86_64 / amd64
+
 <pre>
 $ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
@@ -397,6 +398,7 @@ $ chmod a+x docker.sh
 </pre>
 
 ### 运行 docker.sh 
+
 <pre>
 $ ./docker.sh
 </pre>
