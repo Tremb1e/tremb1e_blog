@@ -1,10 +1,10 @@
-# 部署 k8s 
+# 如何部署 k8s 
 
-###### 环境: Centos8 , docker-18.09.0 , k8s-1.15.1
+环境: Centos8 , docker-18.09.0 , k8s-1.15.1
 
 ## 配置 k8s 的 yum 源
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ cat << EOF > /etc/yum.repos.d/kubernetes.repo
@@ -45,13 +45,13 @@ $ cat /etc/fstab_bak |grep -v swap > /etc/fstab
 
 ## 修改 /etc/sysctl.conf 
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ vim /etc/sysctl.conf
 ```
 
-###### 在其中添加
+在其中添加
 
 ```
 net.ipv4.ip_forward = 1
@@ -59,7 +59,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 ```
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ sysctl -p
@@ -67,7 +67,7 @@ $ sysctl -p
 
 ## 安装 kubelet 、 kubeadm 、 kubectl 
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ yum install -y kubelet-1.15.1 kubeadm-1.15.1 kubectl-1.15.1
@@ -75,20 +75,20 @@ $ yum install -y kubelet-1.15.1 kubeadm-1.15.1 kubectl-1.15.1
 
 ## 修改 docker Cgroup Driver 为 systemd 
 
-###### 如果不修改，在添加 node 节点时可能会碰到如下错误
+如果不修改，在添加 node 节点时可能会碰到如下错误
 
 ```
 [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
 Please follow the guide at https://kubernetes.io/docs/setup/cri/
 ```
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ vim /usr/lib/systemd/system/docker.service
 ```
 
-###### 在其中添加
+在其中添加
 
 ```
 --exec-opt native.cgroupdriver=system
@@ -96,7 +96,7 @@ $ vim /usr/lib/systemd/system/docker.service
 
 ## 重启 docker ，并启动 kubelet 
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 ```
 $ systemctl daemon-reload
@@ -133,7 +133,7 @@ EOF
 
 ### 初始化 k8s 
 
-###### 只在 master 节点运行
+只在 master 节点运行
 
 ```
 $ kubeadm init --config=kubeadm-config.yaml --upload-certs
@@ -156,11 +156,11 @@ kubeadm join master.k8s.com:6443 --token 637lys.e9bjoo33sw4apn27 \
     --discovery-token-ca-cert-hash sha256:65e8525f1e109eced9a020ff80dc0ca95e18aa88ed4c1dd3907327e81be37868
 ```
 
-###### node 节点复制 join 命令即可加入 k8s 集群中
+node 节点复制 join 命令即可加入 k8s 集群中
 
 ### 初始化 root 用户的 kubectl 配置
 
-###### 只在 master 节点运行
+只在 master 节点运行
 
 ```
 $ rm -rf /root/.kube/
@@ -170,7 +170,7 @@ $ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 ### 安装 flannel 
 
-###### 在 master 节点和 node 节点都要执行
+在 master 节点和 node 节点都要执行
 
 #### 新建 flannel 配置文件
 
@@ -220,7 +220,7 @@ $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-###### 不清理旧文件会报错
+不清理旧文件会报错
 
 ```
 [root@k8s-master ~]# kubectl get nodes
