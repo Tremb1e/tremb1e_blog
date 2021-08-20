@@ -452,7 +452,9 @@ Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /
 
 ## 5.安装 docker-compose 
 
-### 运行此命令以下载 Docker Compose 的当前稳定版本(要安装不同版本的 Compose，请替换1.29.2 为你要使用的 Compose 版本)
+### 下载 Docker Compose 的当前稳定版本
+
+要安装不同版本的 Compose，请替换1.29.2 为你要使用的 Compose 版本
 
 ```
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
