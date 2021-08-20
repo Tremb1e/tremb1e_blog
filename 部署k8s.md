@@ -209,7 +209,7 @@ $ kubeadm reset
 ### 再启动 k8s 
 
 ```
-kubeadm init --config=kubeadm-config.yaml --upload-certs
+$ kubeadm init --config=kubeadm-config.yaml --upload-certs
 ```
 
 ### 清理旧文件
