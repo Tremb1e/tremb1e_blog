@@ -14,7 +14,7 @@ $ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 ### 设置存储库
 
-#### 更新 apt 包索引并安装包以允许 apt 通过 HTTPS 使用存储库
+更新 apt 包索引并安装包以允许 apt 通过 HTTPS 使用存储库
 
 ```
 $ sudo apt-get update
@@ -22,7 +22,7 @@ $ sudo apt-get update
 
 
 ```
-$ sudo apt-get install \ 
+$ sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -30,13 +30,13 @@ $ sudo apt-get install \
     lsb-release 
 ```
 
-#### 添加 Docker 官方的 GPG 密钥
+添加 Docker 官方的 GPG 密钥
 
 ```
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
-#### 使用以下命令设置稳定存储库
+使用以下命令设置稳定存储库
 
 ##### x86_64 / amd64
 
@@ -72,7 +72,7 @@ $ echo \
 
 ### 安装 Docker 引擎
 
-#### 更新 apt 包索引，安装最新版本的 Docker Engine 和 containerd ，或者到下一步安装特定版本
+更新 apt 包索引，安装最新版本的 Docker Engine 和 containerd ，或者到下一步安装特定版本
 
 ```
 $ sudo apt-get update
@@ -82,7 +82,7 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-#### 要安装特定版本的 Docker Engine，请在 repo 中列出可用版本，然后选择并安装
+要安装特定版本的 Docker Engine，请在 repo 中列出可用版本，然后选择并安装
 
 ##### 列出您的存储库中可用的版本
 
@@ -110,13 +110,13 @@ $ root@tremb1e:~# apt-cache madison docker-ce
  docker-ce | 5:19.03.9~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages
 ```
 
-##### 安装显示的特定版本的 docker ，例如 5:20.10.8~3-0~ubuntu-focal 
+安装显示的特定版本的 docker ，例如 5:20.10.8~3-0~ubuntu-focal 
 
 ```
 $ sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io
 ```
 
-#### 通过运行 hello-world 映像检测 docker 是否安装成功
+通过运行 hello-world 映像检测 docker 是否安装成功
 
 ```
 $ sudo docker run hello-world
@@ -156,7 +156,7 @@ For more examples and ideas, visit:
 
 ## 2.下载 deb 包并手动安装（可在离线环境下使用）
 
-### 去 [https://download.docker.com/linux/ubuntu/dists/](https://download.docker.com/linux/ubuntu/dists/) 选择你的Ubuntu版本，然后浏览pool/stable/，选择amd64， armhf，arm64，或s390x，并下载 .deb 文件要安装的 docker 版本
+去 [https://download.docker.com/linux/ubuntu/dists/](https://download.docker.com/linux/ubuntu/dists/) 选择你的Ubuntu版本，然后浏览pool/stable/，选择amd64， armhf，arm64，或s390x，并下载 .deb 文件要安装的 docker 版本
 
 在 [https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/](https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/)目录下，包含以下文件，挑选相应版本下载
 
@@ -272,13 +272,13 @@ docker-scan-plugin_0.7.0~ubuntu-bionic_amd64.deb                                
 docker-scan-plugin_0.8.0~ubuntu-bionic_amd64.deb                                      2021-06-14 15:54:34 3.7 MiB
 ```
 
-### 安装 Docker Engine，将下面的路径更改为下载 Docker 包的路径
+安装 Docker Engine，将下面的路径更改为下载 Docker 包的路径
 
 ```
 $ sudo dpkg -i /path/to/package.deb
 ```
 
-### 通过运行 hello-world 映像验证 Docker Engine 是否已正确安装
+通过运行 hello-world 映像验证 Docker Engine 是否已正确安装
 
 ```
 $ sudo docker run hello-world
@@ -302,7 +302,7 @@ Docker 在 [https://get.docker.com/](https://get.docker.com/) 上提供了一个
 
 + 该脚本并非旨在升级现有的 Docker 安装。使用脚本更新现有安装时，依赖项可能不会更新到预期版本，从而导致使用过时的版本。
 
-#### 可以运行带有DRY_RUN=1选项的脚本以了解脚本在安装过程中将执行的步骤
+可以运行带有DRY_RUN=1选项的脚本以了解脚本在安装过程中将执行的步骤
 
 ```
 $ curl -fsSL https://get.docker.com -o get-docker.sh
@@ -322,7 +322,7 @@ $ root@tremb1e:~# sudo ./get-docker.sh
 
 ## 4.源码安装
 
-### 本文使用 **docker-18.09.0** 版本作为示例
+本文使用 **docker-18.09.0** 版本作为示例
 
 ### 下载 docker 对应版本的离线安装包
 
