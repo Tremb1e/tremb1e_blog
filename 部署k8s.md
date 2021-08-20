@@ -226,3 +226,83 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 [root@k8s-master ~]# kubectl get nodes
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "kubernetes")
 ```
+
+## 初始化 node 节点
+
+### 获得 join 命令参数
+
+只在 master 节点运行
+
+```
+$ kubeadm token create --print-join-command
+```
+
+```
+[root@k8s-master ~]# kubeadm token create --print-join-command
+kubeadm join master.k8s.com:6443 --token jijnq7.n54w5krbdiyefp2b     --discovery-token-ca-cert-hash sha256:65e8525f1e109eced9a020ff80dc0ca95e18aa88ed4c1dd3907327e81be37868 
+```
+
+### 配置 node 节点
+
+只在 node 节点执行（ x.x.x.x 为 master 节点内网 IP ）
+
+```
+$ echo "x.x.x.x  master.k8s.com" >> /etc/hosts
+$ echo "x.x.x.x  k8s-master" >> /etc/hosts
+```
+
+```
+$ hostnamectl set-hostname k8s-node1
+```
+
+```
+$ kubeadm join master.k8s.com:6443 --token jijnq7.n54w5krbdiyefp2b     --discovery-token-ca-cert-hash sha256:65e8525f1e109eced9a020ff80dc0ca95e18aa88ed4c1dd3907327e81be37868
+```
+
+### 检查 k8s 集群状态
+
+只在 master 节点运行
+
+```
+$ kubectl get nodes
+```
+
+```
+[root@k8s-master ~]# kubectl get nodes
+NAME         STATUS     ROLES    AGE   VERSION
+k8s-master   NotReady   master   33m   v1.15.1
+k8s-node1    NotReady   <none>   30s   v1.15.1
+```
+
+### 配置 flannel 
+
+只在 master 节点运行
+
+且在 Node 节点全部加入后
+
+```
+$ kubectl apply -f kube-flannel.yml
+```
+
+### 再次检查 k8s 集群状态
+
+```
+$ kubectl get nodes
+```
+
+```
+[root@k8s-master ~]# kubectl get nodes
+NAME         STATUS     ROLES    AGE     VERSION
+k8s-master   Ready      master   35m     v1.15.1
+k8s-node1    Ready      <none>   2m30s   v1.15.1
+```
+
+## 移除 node 节点
+
+在对节点执行维护（例如内核升级、硬件维护等）之前， 可以使用 kubectl drain 从节点安全地逐出所有 Pods。 安全的驱逐过程允许 Pod 的容器 体面地终止， 并确保满足指定的 PodDisruptionBudgets
+
+只在 master 节点执行
+
+```
+kubectl drain <node name>
+```
