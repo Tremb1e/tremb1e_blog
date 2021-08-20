@@ -114,7 +114,8 @@ $ echo "192.168.159.146  k8s-master" >> /etc/hosts
 ```
 
 ```
-hostnamectl set-hostname k8s-master```
+hostnamectl set-hostname k8s-master
+```
 
 ### 创建 kubeadm-config.yaml
 
